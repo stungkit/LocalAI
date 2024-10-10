@@ -31,24 +31,6 @@ import (
 	"github.com/rs/zerolog/log"
 )
 
-func readAuthHeader(c *fiber.Ctx) string {
-	authHeader := c.Get("Authorization")
-
-	// elevenlabs
-	xApiKey := c.Get("xi-api-key")
-	if xApiKey != "" {
-		authHeader = "Bearer " + xApiKey
-	}
-
-	// anthropic
-	xApiKey = c.Get("x-api-key")
-	if xApiKey != "" {
-		authHeader = "Bearer " + xApiKey
-	}
-
-	return authHeader
-}
-
 // Embed a directory
 //
 //go:embed static/*
@@ -138,6 +120,9 @@ func App(cl *config.BackendConfigLoader, ml *model.ModelLoader, appConfig *confi
 			return metricsService.Shutdown()
 		})
 	}
+
+ // Health Checks should always be exempt from auth, so register these first
+	routes.HealthRoutes(app)
 
 	kaConfig, err := middleware.GetKeyAuthConfig(appConfig)
 	if err != nil || kaConfig == nil {

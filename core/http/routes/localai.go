@@ -42,14 +42,6 @@ func RegisterLocalAIRoutes(app *fiber.App,
 	app.Post("/stores/get", localai.StoresGetEndpoint(sl, appConfig))
 	app.Post("/stores/find", localai.StoresFindEndpoint(sl, appConfig))
 
-	// Kubernetes health checks
-	ok := func(c *fiber.Ctx) error {
-		return c.SendStatus(200)
-	}
-
-	app.Get("/healthz", ok)
-	app.Get("/readyz", ok)
-
 	app.Get("/metrics", localai.LocalAIMetricsEndpoint())
 
 	// Experimental Backend Statistics Module
@@ -70,5 +62,8 @@ func RegisterLocalAIRoutes(app *fiber.App,
 	})
 
 	app.Get("/system", localai.SystemInformations(ml, appConfig))
+
+	// misc
+	app.Post("/v1/tokenize", localai.TokenizeEndpoint(cl, ml, appConfig))
 
 }
