@@ -954,6 +954,76 @@
     - filename: mrm8488_Qwen3-14B-ft-limo-Q4_K_M.gguf
       sha256: 19d6dfd4a470cb293ad5e96bd94689fa2d12d1024eac548479c2e64f967d5f00
       uri: huggingface://bartowski/mrm8488_Qwen3-14B-ft-limo-GGUF/mrm8488_Qwen3-14B-ft-limo-Q4_K_M.gguf
+- !!merge <<: *qwen3
+  name: "arcee-ai_homunculus"
+  icon: https://huggingface.co/arcee-ai/Homunculus/resolve/main/logo.jpg
+  urls:
+    - https://huggingface.co/arcee-ai/Homunculus
+    - https://huggingface.co/bartowski/arcee-ai_Homunculus-GGUF
+  description: |
+      Homunculus is a 12 billion-parameter instruction model distilled from Qwen3-235B onto the Mistral-Nemo backbone. It was purpose-built to preserve Qwen’s two-mode interaction style—/think (deliberate chain-of-thought) and /nothink (concise answers)—while running on a single consumer GPU.
+  overrides:
+    parameters:
+      model: arcee-ai_Homunculus-Q4_K_M.gguf
+  files:
+    - filename: arcee-ai_Homunculus-Q4_K_M.gguf
+      sha256: 243a41543cc239612465b0474afb782a5cde130d836b7cbd60d1120295269318
+      uri: huggingface://bartowski/arcee-ai_Homunculus-GGUF/arcee-ai_Homunculus-Q4_K_M.gguf
+- !!merge <<: *qwen3
+  name: "goekdeniz-guelmez_josiefied-qwen3-14b-abliterated-v3"
+  urls:
+    - https://huggingface.co/Goekdeniz-Guelmez/Josiefied-Qwen3-14B-abliterated-v3
+    - https://huggingface.co/bartowski/Goekdeniz-Guelmez_Josiefied-Qwen3-14B-abliterated-v3-GGUF
+  description: |
+    The JOSIEFIED model family represents a series of highly advanced language models built upon renowned architectures such as Alibaba’s Qwen2/2.5/3, Google’s Gemma3, and Meta’s LLaMA 3/4. Covering sizes from 0.5B to 32B parameters, these models have been significantly modified (“abliterated”) and further fine-tuned to maximize uncensored behavior without compromising tool usage or instruction-following abilities.
+
+    Despite their rebellious spirit, the JOSIEFIED models often outperform their base counterparts on standard benchmarks — delivering both raw power and utility.
+    These models are intended for advanced users who require unrestricted, high-performance language generation. Introducing Josiefied-Qwen3-14B-abliterated-v3, a new addition to the JOSIEFIED family — fine-tuned with a focus on openness and instruction alignment.
+  overrides:
+    parameters:
+      model: Goekdeniz-Guelmez_Josiefied-Qwen3-14B-abliterated-v3-Q4_K_M.gguf
+  files:
+    - filename: Goekdeniz-Guelmez_Josiefied-Qwen3-14B-abliterated-v3-Q4_K_M.gguf
+      sha256: 505c7911066931569a38ef6b073d09396f25ddd9d9bcedd2ad54d172326361bc
+      uri: huggingface://bartowski/Goekdeniz-Guelmez_Josiefied-Qwen3-14B-abliterated-v3-GGUF/Goekdeniz-Guelmez_Josiefied-Qwen3-14B-abliterated-v3-Q4_K_M.gguf
+- !!merge <<: *qwen3
+  name: "nbeerbower_qwen3-gutenberg-encore-14b"
+  icon: https://huggingface.co/nbeerbower/Mistral-Nemo-Gutenberg-Encore-12B/resolve/main/encore_cover.png?download=true
+  urls:
+    - https://huggingface.co/nbeerbower/Qwen3-Gutenberg-Encore-14B
+    - https://huggingface.co/bartowski/nbeerbower_Qwen3-Gutenberg-Encore-14B-GGUF
+  description: |
+    nbeerbower/Xiaolong-Qwen3-14B finetuned on:
+
+    jondurbin/gutenberg-dpo-v0.1
+    nbeerbower/gutenberg2-dpo
+    nbeerbower/gutenberg-moderne-dpo
+    nbeerbower/synthetic-fiction-dpo
+    nbeerbower/Arkhaios-DPO
+    nbeerbower/Purpura-DPO
+    nbeerbower/Schule-DPO
+  overrides:
+    parameters:
+      model: nbeerbower_Qwen3-Gutenberg-Encore-14B-Q4_K_M.gguf
+  files:
+    - filename: nbeerbower_Qwen3-Gutenberg-Encore-14B-Q4_K_M.gguf
+      sha256: 9c4c39a42431ceed3ccfab796fcab7385995e00a59a8a724c51769289c49a7b7
+      uri: huggingface://bartowski/nbeerbower_Qwen3-Gutenberg-Encore-14B-GGUF/nbeerbower_Qwen3-Gutenberg-Encore-14B-Q4_K_M.gguf
+- !!merge <<: *qwen3
+  name: "akhil-theerthala_kuvera-8b-v0.1.0"
+  urls:
+    - https://huggingface.co/Akhil-Theerthala/Kuvera-8B-v0.1.0
+    - https://huggingface.co/bartowski/Akhil-Theerthala_Kuvera-8B-v0.1.0-GGUF
+  description: |
+    This model is a fine-tuned version of Qwen/Qwen3-8B designed to answer personal finance queries. It has been trained on a specialized dataset of real Reddit queries with synthetically curated responses, focusing on understanding both the financial necessities and the psychological context of the user.
+    The model aims to provide empathetic and practical advice for a wide range of personal finance topics. It leverages a base model's strong language understanding and generation capabilities, further enhanced by targeted fine-tuning on domain-specific data. A key feature of this model is its training to consider the emotional and psychological state of the person asking the query, alongside the purely financial aspects.
+  overrides:
+    parameters:
+      model: Akhil-Theerthala_Kuvera-8B-v0.1.0-Q4_K_M.gguf
+  files:
+    - filename: Akhil-Theerthala_Kuvera-8B-v0.1.0-Q4_K_M.gguf
+      sha256: a4e5f379ad58b4225620b664f2c67470f40b43d49a6cf05c83d10ab34ddceb85
+      uri: huggingface://bartowski/Akhil-Theerthala_Kuvera-8B-v0.1.0-GGUF/Akhil-Theerthala_Kuvera-8B-v0.1.0-Q4_K_M.gguf
 - &gemma3
   url: "github:mudler/LocalAI/gallery/gemma.yaml@master"
   name: "gemma-3-27b-it"
@@ -2865,6 +2935,28 @@
     - filename: TheDrummer_Valkyrie-49B-v1-Q4_K_M.gguf
       sha256: f50be1eef41e0da2cb59e4b238f4f178ee1000833270b337f97f91572c31b752
       uri: huggingface://bartowski/TheDrummer_Valkyrie-49B-v1-GGUF/TheDrummer_Valkyrie-49B-v1-Q4_K_M.gguf
+- !!merge <<: *llama33
+  name: "e-n-v-y_legion-v2.1-llama-70b-elarablated-v0.8-hf"
+  urls:
+    - https://huggingface.co/e-n-v-y/Legion-V2.1-LLaMa-70B-Elarablated-v0.8-hf
+    - https://huggingface.co/bartowski/e-n-v-y_Legion-V2.1-LLaMa-70B-Elarablated-v0.8-hf-GGUF
+  description: |
+    This checkpoint was finetuned with a process I'm calling "Elarablation" (a portamenteau of "Elara", which is a name that shows up in AI-generated writing and RP all the time) and "ablation". The idea is to reduce the amount of repetitiveness and "slop" that the model exhibits. In addition to significantly reducing the occurrence of the name "Elara", I've also reduced other very common names that pop up in certain situations. I've also specifically attacked two phrases, "voice barely above a whisper" and "eyes glinted with mischief", which come up a lot less often now. Finally, I've convinced it that it can put a f-cking period after the word "said" because a lot of slop-ish phrases tend to come after "said,".
+
+    You can check out some of the more technical details in the overview on my github repo, here:
+
+    https://github.com/envy-ai/elarablate
+
+    My current focus has been on some of the absolute worst offending phrases in AI creative writing, but I plan to go after RP slop as well. If you run into any issues with this model (going off the rails, repeating tokens, etc), go to the community tab and post the context and parameters in a comment so I can look into it. Also, if you have any "slop" pet peeves, post the context of those as well and I can try to reduce/eliminate them in the next version.
+
+    The settings I've tested with are temperature at 0.7 and all other filters completely neutral. Other settings may lead to better or worse results.
+  overrides:
+    parameters:
+      model: e-n-v-y_Legion-V2.1-LLaMa-70B-Elarablated-v0.8-hf-Q4_K_M.gguf
+  files:
+    - filename: e-n-v-y_Legion-V2.1-LLaMa-70B-Elarablated-v0.8-hf-Q4_K_M.gguf
+      sha256: 2d57b5b0788761f3adb54b60f0e3dcf43a7b2e5bd83c475c689f7f86e86bbc90
+      uri: huggingface://bartowski/e-n-v-y_Legion-V2.1-LLaMa-70B-Elarablated-v0.8-hf-GGUF/e-n-v-y_Legion-V2.1-LLaMa-70B-Elarablated-v0.8-hf-Q4_K_M.gguf
 - &rwkv
   url: "github:mudler/LocalAI/gallery/rwkv.yaml@master"
   name: "rwkv-6-world-7b"
@@ -4041,6 +4133,24 @@
     - filename: Menlo_ReZero-v0.1-llama-3.2-3b-it-grpo-250404-Q4_K_M.gguf
       sha256: b9f01bead9e163db9351af036d8d63ef479d7d48a1bb44934ead732a180f371c
       uri: huggingface://bartowski/Menlo_ReZero-v0.1-llama-3.2-3b-it-grpo-250404-GGUF/Menlo_ReZero-v0.1-llama-3.2-3b-it-grpo-250404-Q4_K_M.gguf
+- !!merge <<: *llama32
+  name: "ultravox-v0_5-llama-3_2-1b"
+  urls:
+    - https://huggingface.co/fixie-ai/ultravox-v0_5-llama-3_2-1b
+    - https://huggingface.co/ggml-org/ultravox-v0_5-llama-3_2-1b-GGUF
+  description: |
+    Ultravox is a multimodal Speech LLM built around a pretrained Llama3.2-1B-Instruct and whisper-large-v3-turbo backbone.
+  overrides:
+    mmproj: mmproj-ultravox-v0_5-llama-3_2-1b-f16.gguf
+    parameters:
+      model: Llama-3.2-1B-Instruct-Q4_K_M.gguf
+  files:
+    - filename: Llama-3.2-1B-Instruct-Q4_K_M.gguf
+      sha256: 6f85a640a97cf2bf5b8e764087b1e83da0fdb51d7c9fab7d0fece9385611df83
+      uri: huggingface://ggml-org/ultravox-v0_5-llama-3_2-1b-GGUF/Llama-3.2-1B-Instruct-Q4_K_M.gguf
+    - filename: mmproj-ultravox-v0_5-llama-3_2-1b-f16.gguf
+      sha256: b34dde1835752949d6b960528269af93c92fec91c61ea0534fcc73f96c1ed8b2
+      uri: https://huggingface.co/ggml-org/ultravox-v0_5-llama-3_2-1b-GGUF/resolve/main/mmproj-ultravox-v0_5-llama-3_2-1b-f16.gguf
 - &qwen25
   name: "qwen2.5-14b-instruct" ## Qwen2.5
   icon: https://avatars.githubusercontent.com/u/141221163
@@ -7703,6 +7813,25 @@
     - filename: mmproj-Qwen2.5-Omni-7B-Q8_0.gguf
       sha256: 4a7bc5478a2ec8c5d186d63532eb22e75b79ba75ec3c0ce821676157318ef4ad
       uri: https://huggingface.co/ggml-org/Qwen2.5-Omni-7B-GGUF/resolve/main/mmproj-Qwen2.5-Omni-7B-Q8_0.gguf
+- !!merge <<: *qwen25
+  name: "open-thoughts_openthinker3-7b"
+  icon: https://huggingface.co/datasets/open-thoughts/open-thoughts-114k/resolve/main/open_thoughts.png
+  urls:
+    - https://huggingface.co/open-thoughts/OpenThinker3-7B
+    - https://huggingface.co/bartowski/open-thoughts_OpenThinker3-7B-GGUF
+  description: |
+    State-of-the-art open-data 7B reasoning model. 🚀
+
+    This model is a fine-tuned version of Qwen/Qwen2.5-7B-Instruct on the OpenThoughts3-1.2M dataset. It represents a notable improvement over our previous models, OpenThinker-7B and OpenThinker2-7B, and it outperforms several other strong reasoning 7B models such as DeepSeek-R1-Distill-Qwen-7B and Llama-3.1-Nemotron-Nano-8B-v1, despite being trained only with SFT, without any RL.
+
+    This time, we also released a paper! See our paper and blog post for more details. OpenThinker3-32B to follow! 👀
+  overrides:
+    parameters:
+      model: open-thoughts_OpenThinker3-7B-Q4_K_M.gguf
+  files:
+    - filename: open-thoughts_OpenThinker3-7B-Q4_K_M.gguf
+      sha256: 73b8f44c3b11c3ec63e4c4ddbb262679c8f681511d84940c4c990814aa0bafc0
+      uri: huggingface://bartowski/open-thoughts_OpenThinker3-7B-GGUF/open-thoughts_OpenThinker3-7B-Q4_K_M.gguf
 - &llama31
   url: "github:mudler/LocalAI/gallery/llama3.1-instruct.yaml@master" ## LLama3.1
   icon: https://avatars.githubusercontent.com/u/153379578
@@ -9997,6 +10126,30 @@
     - filename: nvidia_Llama-3.1-Nemotron-Nano-4B-v1.1-Q4_K_M.gguf
       sha256: 530f0e0ade58d22d4b24d9378cf8a87161d22f33cae8f2f65876f3a1555819e6
       uri: huggingface://bartowski/nvidia_Llama-3.1-Nemotron-Nano-4B-v1.1-GGUF/nvidia_Llama-3.1-Nemotron-Nano-4B-v1.1-Q4_K_M.gguf
+- !!merge <<: *llama31
+  name: "ultravox-v0_5-llama-3_1-8b"
+  urls:
+    - https://huggingface.co/fixie-ai/ultravox-v0_5-llama-3_1-8b
+    - https://huggingface.co/ggml-org/ultravox-v0_5-llama-3_1-8b-GGUF
+  description: |
+    Ultravox is a multimodal Speech LLM built around a pretrained Llama3.1-8B-Instruct and whisper-large-v3-turbo backbone.
+
+    See https://ultravox.ai for the GitHub repo and more information.
+
+    Ultravox is a multimodal model that can consume both speech and text as input (e.g., a text system prompt and voice user message). The input to the model is given as a text prompt with a special <|audio|> pseudo-token, and the model processor will replace this magic token with embeddings derived from the input audio. Using the merged embeddings as input, the model will then generate output text as usual.
+
+    In a future revision of Ultravox, we plan to expand the token vocabulary to support generation of semantic and acoustic audio tokens, which can then be fed to a vocoder to produce voice output. No preference tuning has been applied to this revision of the model.
+  overrides:
+    mmproj: mmproj-ultravox-v0_5-llama-3_1-8b-f16.gguf
+    parameters:
+      model: Meta-Llama-3.1-8B-Instruct-Q4_K_M.gguf
+  files:
+    - filename: Meta-Llama-3.1-8B-Instruct-Q4_K_M.gguf
+      sha256: 7b064f5842bf9532c91456deda288a1b672397a54fa729aa665952863033557c
+      uri: huggingface://ggml-org/ultravox-v0_5-llama-3_1-8b-GGUF/Meta-Llama-3.1-8B-Instruct-Q4_K_M.gguf
+    - filename: mmproj-ultravox-v0_5-llama-3_1-8b-f16.gguf
+      sha256: e6395ed42124303eaa9fca934452aabce14c59d2a56fab2dda65b798442289ff
+      uri: https://huggingface.co/ggml-org/ultravox-v0_5-llama-3_1-8b-GGUF/resolve/main/mmproj-ultravox-v0_5-llama-3_1-8b-f16.gguf
 - &deepseek
   url: "github:mudler/LocalAI/gallery/deepseek.yaml@master" ## Deepseek
   name: "deepseek-coder-v2-lite-instruct"
@@ -10642,6 +10795,37 @@
     - filename: PKU-DS-LAB_FairyR1-32B-Q4_K_M.gguf
       sha256: bbfe6602b9d4f22da36090a4c77da0138c44daa4ffb01150d0370f6965503e65
       uri: huggingface://bartowski/PKU-DS-LAB_FairyR1-32B-GGUF/PKU-DS-LAB_FairyR1-32B-Q4_K_M.gguf
+- !!merge <<: *deepseek-r1
+  name: "nvidia_nemotron-research-reasoning-qwen-1.5b"
+  urls:
+    - https://huggingface.co/nvidia/Nemotron-Research-Reasoning-Qwen-1.5B
+    - https://huggingface.co/bartowski/nvidia_Nemotron-Research-Reasoning-Qwen-1.5B-GGUF
+  description: |
+    Nemotron-Research-Reasoning-Qwen-1.5B is the world’s leading 1.5B open-weight model for complex reasoning tasks such as mathematical problems, coding challenges, scientific questions, and logic puzzles. It is trained using the ProRL algorithm on a diverse and comprehensive set of datasets. Our model has achieved impressive results, outperforming Deepseek’s 1.5B model by a large margin on a broad range of tasks, including math, coding, and GPQA.
+
+    This model is for research and development only.
+  overrides:
+    parameters:
+      model: nvidia_Nemotron-Research-Reasoning-Qwen-1.5B-Q4_K_M.gguf
+  files:
+    - filename: nvidia_Nemotron-Research-Reasoning-Qwen-1.5B-Q4_K_M.gguf
+      sha256: 3685e223b41b39cef92aaa283d9cc943e27208eab942edfd1967059d6a98aa7a
+      uri: huggingface://bartowski/nvidia_Nemotron-Research-Reasoning-Qwen-1.5B-GGUF/nvidia_Nemotron-Research-Reasoning-Qwen-1.5B-Q4_K_M.gguf
+- !!merge <<: *deepseek-r1
+  name: "deepseek-ai_deepseek-r1-0528-qwen3-8b"
+  icon: https://github.com/deepseek-ai/DeepSeek-V2/blob/main/figures/logo.svg?raw=true
+  urls:
+    - https://huggingface.co/deepseek-ai/DeepSeek-R1-0528-Qwen3-8B
+    - https://huggingface.co/bartowski/deepseek-ai_DeepSeek-R1-0528-Qwen3-8B-GGUF
+  description: |
+    The DeepSeek R1 model has undergone a minor version upgrade, with the current version being DeepSeek-R1-0528. In the latest update, DeepSeek R1 has significantly improved its depth of reasoning and inference capabilities by leveraging increased computational resources and introducing algorithmic optimization mechanisms during post-training. The model has demonstrated outstanding performance across various benchmark evaluations, including mathematics, programming, and general logic. Its overall performance is now approaching that of leading models, such as O3 and Gemini 2.5 Pro.
+  overrides:
+    parameters:
+      model: deepseek-ai_DeepSeek-R1-0528-Qwen3-8B-Q4_K_M.gguf
+  files:
+    - filename: deepseek-ai_DeepSeek-R1-0528-Qwen3-8B-Q4_K_M.gguf
+      sha256: e0c2f118fd59f3a16f20d18b0e7f79e960c84bc8c66d94fd71a691e05151d54f
+      uri: huggingface://bartowski/deepseek-ai_DeepSeek-R1-0528-Qwen3-8B-GGUF/deepseek-ai_DeepSeek-R1-0528-Qwen3-8B-Q4_K_M.gguf
 - &qwen2
   url: "github:mudler/LocalAI/gallery/chatml.yaml@master" ## Start QWEN2
   name: "qwen2-7b-instruct"
