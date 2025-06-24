@@ -3441,6 +3441,27 @@
     - filename: Qwen2.5-Coder-32B-Instruct-Uncensored.i1-Q4_K_M.gguf
       sha256: 86ac8efb86daf241792ac3d5d35b7da92c54901b4208a6f2829bd03d8f273c9c
       uri: huggingface://mraWdermacher/Qwen2.5-Coder-32B-Instruct-Uncensored-i1-GGUF/Qwen2.5-Coder-32B-Instruct-Uncensored.i1-Q4_K_M.gguf
+- !!merge <<: *qwen25coder
+  name: "skywork_skywork-swe-32b"
+  icon: https://cdn-uploads.huggingface.co/production/uploads/6665dd2b3a64c70529f7542c/8o-IE7N3GwSFCIH3ntc8E.png
+  urls:
+    - https://huggingface.co/Skywork/Skywork-SWE-32B
+    - https://huggingface.co/bartowski/Skywork_Skywork-SWE-32B-GGUF
+  description: |
+    Skywork-SWE-32B is a code agent model developed by Skywork AI, specifically designed for software engineering (SWE) tasks. It demonstrates strong performance across several key metrics:
+
+    Skywork-SWE-32B attains 38.0% pass@1 accuracy on the SWE-bench Verified benchmark, outperforming previous open-source SoTA Qwen2.5-Coder-32B-based LLMs built on the OpenHands agent framework.
+    When incorporated with test-time scaling techniques, the performance further improves to 47.0% accuracy, surpassing the previous SoTA results for sub-32B parameter models.
+    We clearly demonstrate the data scaling law phenomenon for software engineering capabilities in LLMs, with no signs of saturation at 8209 collected training trajectories.
+
+    We also introduce an efficient and automated pipeline for SWE data collection, culminating in the creation of the Skywork-SWE dataset---a large-scale, high-quality dataset featuring comprehensive executable runtime environments. Detailed descriptions are available on our technical report.
+  overrides:
+    parameters:
+      model: Skywork_Skywork-SWE-32B-Q4_K_M.gguf
+  files:
+    - filename: Skywork_Skywork-SWE-32B-Q4_K_M.gguf
+      sha256: b5a451fa677159d7ab0aee64eeec5933aa4e5bd598e400501ecec3af0a767fa8
+      uri: huggingface://bartowski/Skywork_Skywork-SWE-32B-GGUF/Skywork_Skywork-SWE-32B-Q4_K_M.gguf
 - &opencoder
   name: "opencoder-8b-base"
   icon: https://avatars.githubusercontent.com/u/186387526
@@ -10476,6 +10497,55 @@
     - filename: mmproj-ultravox-v0_5-llama-3_1-8b-f16.gguf
       sha256: e6395ed42124303eaa9fca934452aabce14c59d2a56fab2dda65b798442289ff
       uri: https://huggingface.co/ggml-org/ultravox-v0_5-llama-3_1-8b-GGUF/resolve/main/mmproj-ultravox-v0_5-llama-3_1-8b-f16.gguf
+- !!merge <<: *llama31
+  name: "astrosage-70b"
+  urls:
+    - https://huggingface.co/AstroMLab/AstroSage-70B
+    - https://huggingface.co/mradermacher/AstroSage-70B-GGUF
+  description: |
+    Developed by: AstroMLab (Tijmen de Haan, Yuan-Sen Ting, Tirthankar Ghosal, Tuan Dung Nguyen, Alberto Accomazzi, Emily Herron, Vanessa Lama, Azton Wells, Nesar Ramachandra, Rui Pan)
+    Funded by:
+        Oak Ridge Leadership Computing Facility (OLCF), a DOE Office of Science User Facility at Oak Ridge National Laboratory (U.S. Department of Energy).
+        Microsoft’s Accelerating Foundation Models Research (AFMR) program.
+        World Premier International Research Center Initiative (WPI), MEXT, Japan.
+        National Science Foundation (NSF).
+        UChicago Argonne LLC, Operator of Argonne National Laboratory (U.S. Department of Energy).
+    Reference Paper: Tijmen de Haan et al. (2025). "AstroMLab 4: Benchmark-Topping Performance in Astronomy Q&A with a 70B-Parameter Domain-Specialized Reasoning Model" https://arxiv.org/abs/2505.17592
+    Model Type: Autoregressive transformer-based LLM, specialized in astronomy, astrophysics, space science, astroparticle physics, cosmology, and astronomical instrumentation.
+    Model Architecture: AstroSage-70B is a fine-tuned derivative of the Meta-Llama-3.1-70B architecture, making no architectural changes. The Llama-3.1-70B-Instruct tokenizer is also used without modification.
+    Context Length: Fine-tuned on 8192-token sequences. Base model was trained to 128k context length.
+    AstroSage-70B is a large-scale, domain-specialized language model tailored for research and education in astronomy, astrophysics, space science, cosmology, and astronomical instrumentation. It builds on the Llama-3.1-70B foundation model, enhanced through extensive continued pre-training (CPT) on a vast corpus of astronomical literature, further refined with supervised fine-tuning (SFT) on instruction-following datasets, and finally enhanced via parameter averaging (model merging) with other popular fine tunes. AstroSage-70B aims to achieve state-of-the-art performance on astronomy-specific tasks, providing researchers, students, and enthusiasts with an advanced AI assistant. This 70B parameter model represents a significant scaling up from the AstroSage-8B model. The primary enhancements from the AstroSage-8B model are:
+
+        Stronger base model, higher parameter count for increased capacity
+        Improved datasets
+        Improved learning hyperparameters
+        Reasoning capability (can be enabled or disabled at inference time)
+    Training Lineage
+        Base Model: Meta-Llama-3.1-70B.
+        Continued Pre-Training (CPT): The base model underwent 2.5 epochs of CPT (168k GPU-hours) on a specialized astronomy corpus (details below, largely inherited from AstroSage-8B) to produce AstroSage-70B-CPT. This stage imbues domain-specific knowledge and language nuances.
+        Supervised Fine-Tuning (SFT): AstroSage-70B-CPT was then fine-tuned for 0.6 epochs (13k GPU-hours) using astronomy-relevant and general-purpose instruction-following datasets, resulting in AstroSage-70B-SFT.
+        Final Mixture: The released AstroSage-70B model is created via parameter averaging / model merging:
+            DARE-TIES with rescale: true and lambda: 1.2
+            AstroSage-70B-CPT designated as the "base model"
+            70% AstroSage-70B-SFT (density 0.7)
+            15% Llama-3.1-Nemotron-70B-Instruct (density 0.5)
+            7.5% Llama-3.3-70B-Instruct (density 0.5)
+            7.5% Llama-3.1-70B-Instruct (density 0.5)
+    Intended Use: Like AstroSage-8B, this model can be used for a variety of LLM application, including
+        Providing factual information and explanations in astronomy, astrophysics, cosmology, and instrumentation.
+        Assisting with literature reviews and summarizing scientific papers.
+        Answering domain-specific questions with high accuracy.
+        Brainstorming research ideas and formulating hypotheses.
+        Assisting with programming tasks related to astronomical data analysis.
+        Serving as an educational tool for learning astronomical concepts.
+        Potentially forming the core of future agentic research assistants capable of more autonomous scientific tasks.
+  overrides:
+    parameters:
+      model: AstroSage-70B.Q4_K_M.gguf
+  files:
+    - filename: AstroSage-70B.Q4_K_M.gguf
+      sha256: 1d98dabfa001d358d9f95d2deba93a94ad8baa8839c75a0129cdb6bcf1507f38
+      uri: huggingface://mradermacher/AstroSage-70B-GGUF/AstroSage-70B.Q4_K_M.gguf
 - &deepseek
   url: "github:mudler/LocalAI/gallery/deepseek.yaml@master" ## Deepseek
   name: "deepseek-coder-v2-lite-instruct"
@@ -12764,6 +12834,24 @@
     - filename: mistralai_Mistral-Small-3.2-24B-Instruct-2506-Q4_K_M.gguf
       sha256: 2ad86e0934a4d6f021c1dbcf12d81aac75a84edd3a929294c09cb1cb6117627c
       uri: huggingface://bartowski/mistralai_Mistral-Small-3.2-24B-Instruct-2506-GGUF/mistralai_Mistral-Small-3.2-24B-Instruct-2506-Q4_K_M.gguf
+- !!merge <<: *mistral03
+  icon: https://cdn-uploads.huggingface.co/production/uploads/66c26b6fb01b19d8c3c2467b/jxUvuFK1bdOdAPiYIcBW5.jpeg
+  name: "delta-vector_austral-24b-winton"
+  url: "github:mudler/LocalAI/gallery/chatml.yaml@master"
+  urls:
+    - https://huggingface.co/Delta-Vector/Austral-24B-Winton
+    - https://huggingface.co/bartowski/Delta-Vector_Austral-24B-Winton-GGUF
+  description: |
+    More than 1.5-metres tall, about six-metres long and up to 1000-kilograms heavy, Australovenator Wintonensis was a fast and agile hunter. The largest known Australian theropod.
+
+    This is a finetune of Harbinger 24B to be a generalist Roleplay/Adventure model. I've removed some of the "slops" that i noticed in an otherwise great model aswell as improving the general writing of the model, This was a multi-stage finetune, all previous checkpoints are released aswell.
+  overrides:
+    parameters:
+      model: Delta-Vector_Austral-24B-Winton-Q4_K_M.gguf
+  files:
+    - filename: Delta-Vector_Austral-24B-Winton-Q4_K_M.gguf
+      sha256: feb76e0158d1ebba1809de89d01671b86037f768ebd5f6fb165885ae6338b1b7
+      uri: huggingface://bartowski/Delta-Vector_Austral-24B-Winton-GGUF/Delta-Vector_Austral-24B-Winton-Q4_K_M.gguf
 - &mudler
   url: "github:mudler/LocalAI/gallery/mudler.yaml@master" ### START mudler's LocalAI specific-models
   name: "LocalAI-llama3-8b-function-call-v0.2"
